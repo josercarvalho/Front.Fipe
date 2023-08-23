@@ -1,14 +1,16 @@
 import { TabelaFipeService } from './../../Services/tabela-fipe.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-
+import { Injectable } from "@angular/core";
 import {
   TabelaFipe,
   BuscaCodigoAno,
   BuscaPlaca,
 } from 'src/app/Model/TabelaFipe.model';
+
+@Injectable({
+  providedIn: 'root',
+})
 
 @Component({
   selector: 'app-tabelafipe',
@@ -69,8 +71,8 @@ export class TabelafipeComponent implements OnInit {
         .BuscarPorCodigoAno(codigoano.codigo, codigoano.ano)
         .subscribe((result) => {
           this.dados = result;
-          this.visibilidadeFormulario = true;
         });
+        this.visibilidadeFormulario = true;
     }
   }
 
@@ -80,8 +82,8 @@ export class TabelafipeComponent implements OnInit {
       this.tabelaFipe.BuscarPorPlaca(value)
       .subscribe((result) => {
         this.tabela = result;
-        this.visibilidadeTabela = true;
       });
+      this.visibilidadeTabela = true;
     }
   }
 
@@ -94,8 +96,8 @@ export class TabelafipeComponent implements OnInit {
       this.tabelaFipe.SalvarPlaca(this.dados)
       .subscribe((result) => {
         this.dados = result;
-        this.visibilidadeTabela = false;
       });
+      this.visibilidadeTabela = false;
     }
     this.visibilidadeFormulario = false;
   }
