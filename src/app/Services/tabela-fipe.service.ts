@@ -13,21 +13,21 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TabelaFipeService {
-  url = 'https://localhost:7220/api/Home';
+  uri = 'https://localhost:7220/api';
 
   constructor(private http: HttpClient) { }
 
   BuscarPorCodigoAno(codigoFipe: string, ano: number) : Observable<TabelaFipe> {
-    const apiUrl = `${this.url}/${codigoFipe}/${ano}`;
+    const apiUrl = `${this.uri}/Home/${codigoFipe}/${ano}`;
     return this.http.get<TabelaFipe>(apiUrl);
   }
 
   BuscarPorPlaca(placa: string) : Observable<TabelaFipe> {
-    const apiUrl = `${this.url}${"/BuscarPorPlaca/"}${placa}`;
+    const apiUrl = `${this.uri}/Home/BuscarPorPlaca/${placa}`;
     return this.http.get<TabelaFipe>(apiUrl);
   }
 
   SalvarPlaca(tabelaFipe: TabelaFipe): Observable<TabelaFipe> {
-    return this.http.post<TabelaFipe>(this.url, tabelaFipe, httpOptions);
+    return this.http.post<TabelaFipe>(`${this.uri}/Home`, tabelaFipe, httpOptions);
   }
 }

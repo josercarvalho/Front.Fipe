@@ -1,5 +1,5 @@
 export interface TabelaFipe {
-  id?: number;
+  id?: number | null;
   valor: string;
   marca: string;
   modelo: string;

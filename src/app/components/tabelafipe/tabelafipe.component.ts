@@ -22,7 +22,7 @@ export class TabelafipeComponent implements OnInit {
   placaField = new FormControl();
   placaInput = new FormControl();
   dados: TabelaFipe = {
-    id: 0,
+    id: null,
     valor: '',
     marca: '',
     modelo: '',
@@ -37,7 +37,7 @@ export class TabelafipeComponent implements OnInit {
   };
 
   tabela: TabelaFipe = {
-    id: 0,
+    id: null,
     valor: '',
     marca: '',
     modelo: '',
@@ -50,9 +50,6 @@ export class TabelafipeComponent implements OnInit {
     dataConsulta: '',
     placaVeiculo: '',
   };
-
-  visibilidadeTabela: boolean = false;
-  visibilidadeFormulario: boolean = false;
 
   constructor(private tabelaFipe: TabelaFipeService) {}
 
@@ -72,18 +69,17 @@ export class TabelafipeComponent implements OnInit {
         .subscribe((result) => {
           this.dados = result;
         });
-        this.visibilidadeFormulario = true;
     }
   }
 
   BuscarPlaca(): void {
     let value = this.placaField.value;
+
     if (value && (value = value.trim()) !== '') {
       this.tabelaFipe.BuscarPorPlaca(value)
       .subscribe((result) => {
         this.tabela = result;
       });
-      this.visibilidadeTabela = true;
     }
   }
 
@@ -97,13 +93,10 @@ export class TabelafipeComponent implements OnInit {
       .subscribe((result) => {
         this.dados = result;
       });
-      this.visibilidadeTabela = false;
     }
-    this.visibilidadeFormulario = false;
   }
 
   Voltar() {
-    this.visibilidadeTabela = false;
-    this.visibilidadeFormulario = false;
+
   }
 }

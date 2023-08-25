@@ -1,7 +1,7 @@
 <div class="container p-5">
   <div class="row">
     <div class="col-5 border boder-light rounded p-5 shadow" *ngIf="formulario">
-      <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()">
+      <form [formGroup]="formulario">
         <div class="form-group">
           <label>Codigo Fipe</label>
           <input
@@ -22,7 +22,7 @@
         <div class="container p-5">
           <div class="row" style="text-align: right;">
             <div>
-              <button type="submit" class="btn btn-sm btn-outline-secondary">
+              <button class="btn btn-sm btn-outline-secondary" (click)="EnviarFormulario()">
                 Consultar
               </button>
             </div>
@@ -31,8 +31,9 @@
       </form>
     </div>
     <div class="col"></div>
-    <div class="col-5 border boder-light rounded p-5 shadow" *ngIf="visibilidadeFormulario">
-      <form  (ngSubmit)="EnviarPlaca()">
+    <!-- <div class="col-5 border boder-light rounded p-5 shadow" *ngIf="visibilidadeFormulario"> -->
+      <div class="col-5 border boder-light rounded p-5 shadow">
+      <form >
         <div class="form-group">
           Fipe: <span>{{ dados.codigoFipe }}</span><br>
           Valor: <span>{{ dados.valor }}</span><br>
@@ -53,7 +54,7 @@
         <div class="container p-5">
           <div class="row" style="text-align: right;">
             <div>
-              <button type="submit" class="btn btn-sm btn-outline-secondary">
+              <button class="btn btn-sm btn-outline-secondary" (click)="EnviarPlaca()">
                 Incluir
               </button>
             </div>
@@ -89,7 +90,8 @@
       </form>
     </div>
     <div class="col"></div>
-    <div class="col-5 border boder-light rounded p-5 shadow" *ngIf="visibilidadeTabela">
+    <!-- <div class="col-5 border boder-light rounded p-5 shadow" *ngIf="visibilidadeTabela"> -->
+      <div class="col-5 border boder-light rounded p-5 shadow">
       <form>
         <div class="form-group">
           <div class="form-group">
@@ -98,10 +100,10 @@
             Marca: <span>{{ tabela.marca }}</span><br>
             Modelo: <span>{{ tabela.valor }}</span><br>
             Ano Modelo: <span>{{ tabela.anoModelo }}</span><br>
-            Combustivel: <span>{{ tabela.combustivel }}</span>
-            Mês Referência: <span>{{ tabela.mesReferencia }}</span>
-            Tipo Veiculo: <span>{{ tabela.tipoVeiculo }}</span>
-            Sigla Combustível: <span>{{ tabela.siglaCombustivel }}</span>
+            Combustivel: <span>{{ tabela.combustivel }}</span><br>
+            Mês Referência: <span>{{ tabela.mesReferencia }}</span><br>
+            Tipo Veiculo: <span>{{ tabela.tipoVeiculo }}</span><br>
+            Sigla Combustível: <span>{{ tabela.siglaCombustivel }}</span><br>
             Data Consulta: <span>{{ tabela.dataConsulta }}</span>
           </div>
         </div>
