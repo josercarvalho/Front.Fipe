@@ -4,8 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Injectable } from "@angular/core";
 import {
   TabelaFipe,
-  BuscaCodigoAno,
-  BuscaPlaca,
+  BuscaCodigoAno
 } from 'src/app/Model/TabelaFipe.model';
 
 @Injectable({
